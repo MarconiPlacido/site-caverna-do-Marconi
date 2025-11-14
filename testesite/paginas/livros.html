@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caverna do Marconi</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0e0e12;
+      color: white;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Abel", sans-serif;
+      flex-direction: column;
+    }
+
+    .carousel {
+        margin-top: 10em;
+      --items: 6;
+      --carousel-duration: 40s;
+      --carousel-width: min(80vw, 1200px);
+      --carousel-item-width: 280px;
+      --carousel-item-height: 450px;
+      --carousel-item-gap: 2rem;
+
+      position: relative;
+      width: var(--carousel-width);
+      height: var(--carousel-item-height);
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .carousel:hover article {
+      animation-play-state: paused;
+    }
+
+    .carousel article {
+      position: absolute;
+      top: 0;
+      left: calc(100% + var(--carousel-item-gap));
+      width: var(--carousel-item-width);
+      height: var(--carousel-item-height);
+      display: grid;
+      grid-template-rows: 200px auto 1fr auto;
+      gap: 0.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      animation: marquee var(--carousel-duration) linear infinite;
+    }
+
+    .carousel article:nth-child(1) { animation-delay: calc(var(--carousel-duration) / var(--items) * 0 * -1); }
+    .carousel article:nth-child(2) { animation-delay: calc(var(--carousel-duration) / var(--items) * 1 * -1); }
+    .carousel article:nth-child(3) { animation-delay: calc(var(--carousel-duration) / var(--items) * 2 * -1); }
+    .carousel article:nth-child(4) { animation-delay: calc(var(--carousel-duration) / var(--items) * 3 * -1); }
+    .carousel article:nth-child(5) { animation-delay: calc(var(--carousel-duration) / var(--items) * 4 * -1); }
+    .carousel article:nth-child(6) { animation-delay: calc(var(--carousel-duration) / var(--items) * 5 * -1); }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .carousel article > *:not(img) {
+      padding: 0 1rem;
+    }
+
+    .carousel article div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 0.8rem;
+    }
+
+    .carousel h2 {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin: 0.5rem 0;
+    }
+
+    .carousel a {
+      text-decoration: none;
+      text-transform: lowercase;
+      border: 1px solid #00aaff;
+      color: #00aaff;
+      border-radius: 3px;
+      padding: 0.25rem 0.5rem;
+      align-self: start;
+      transition: 150ms ease-in-out;
+    }
+
+    .carousel a:hover {
+      background-color: #00aaff;
+      color: white;
+    }
+
+    @keyframes marquee {
+      100% {
+        transform: translateX(calc((var(--items) * (var(--carousel-item-width) + var(--carousel-item-gap))) * -1));
+      }
+    }
+  </style>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Caverna do Marconi</title>
+  <link rel="icon" href="/estilos/icone.webp">
+  <link rel="" href="api.js">
+  <!-- Material Symbols (ícone menu) -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/estilos/stylesite.css">
+
+</head>
+
+<body>
+  <header>
+    <div class="left-header">
+      <span id="menu" class="material-symbols-outlined" aria-hidden="true">menu</span>
+      <ul id="linksMenuu" class="linksMenu" aria-hidden="true">
+        <li><a class="ancora" href="#">Cadastros</a></li>
+        <li><a class="ancora" href="#">Criar</a></li>
+        <li><a class="ancora" href="#">Alterar</a></li>
+        <li><a class="ancora" href="#">Deletar</a></li>
+      </ul>
+    </div>
+
+    <h1 class="logo">Caverna do Marconi</h1>
+
+    <nav>
+      <ul class="listaDeLinks">
+        <li><a href="/testesite.html">Home</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Sobre nós</a></li>
+      </ul>
+    </nav>
+  </header>
+<style>
+    header{
+        
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        
+        padding: 1rem;
+        z-index: 1000; /* fica acima do carrossel */
+    }
+
+    
+</style>
+<section>
+    <h3 class="titulo1" style="font-size: 40px;">Livros</h3>
+</section>
+<section>
+    
+  <div class="carousel">
+    
+    <article>
+      <img src="/img/imglivros/harry potter e o prisioneiro.webp" alt="">
+      <h2>Harry Potter</h2>
+      <h4>E o prisioneiro de askaban</h4>
+      <div>
+        <p>Quarto livro da serie onde harry encontra o seu padrinho de nascença, que até então foi considerado um traido por entregar a localização da familia Potter</p>
+        <br>
+        <h3 >Valor: R$:120,00</h3>
+        <a href="#">Saiba mais</a>
+        <br>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/spartacus.webp" alt="">
+      <h2>Spartacus</h2>
+      <div>
+        <p>embarque nessa apaixonante história, de um personagem historico, nascido na tracia, levado como escravo para Roma, lutou em coliseus, e formou um exercito de escravos lutando contra o maior império que esse mundo já viu</p>
+        <br>
+        <h3 >Valor: R$:43,99</h3>
+        <a href="#">Saiba mais</a>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/anne frack.webp" alt="">
+      <h2>Anne frank</h2>
+      <div>
+        <p>Esse livro nos convida a refletir sobre uma experiencia terrivel de um passado não muito distante, viva, sinta e se identifique com Anne Frank, uma judia em meio ao caos da segunda guerra mundial e o nazismo</p>
+        <h3 >Valor: R$:38,99</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/livro pecadores nas mãos de um Deus irado.webp" alt="">
+      <h2>Pecadores nas mãos de um dos irados</h2>
+      <div>
+        <p>Leia, reflita e aprenda com um dos sermões mais duros de todos os tempos, veja a ira de um Deus Santo que odeia o pecado mais que tudo, vendo vc fazer a coisa que ele mais odeia todos os dias</p>
+        <h3 >Valor: R$:26,99</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/como fazer amigos e influenciar pessoas.webp" alt="">
+      <h2>Como fazer amigos e influenciar pessoas</h2>
+      <div>
+        <p>nesse livro você aprenderá acima de tudo a se tornar alguém agradavel, da qual as pessoas gostam, e por gostarem de você estarão mais propensos a fazer o que vc pede, ou o que é bom para vc mesmo sem vc pedir</p>
+        <h3 >Valor: R$:46,99</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/O peregrino.webp" alt="">
+      <h2>O peregrino</h2>
+      <div>
+        <p>Um classico da literatura cristã, repleto de alegorias, ensinamentos e reflexões.</p>
+        <h3 >Valor: R$:33,99</h3>
+        <a href="#">Saiba mais</a>
+        
+      </div>
+    </article>
+  </div>
+  </section>
+    <!-- -------------- divisão para o proximo carrossel---------- -->
+
+    <br><br>
+  <section >
+    <h3 class="titulo1" style="color: burlywood; font-size: 40px;">Kits</h3>
+     <div class="carousel">
+    <article>
+      <img src="/img/imglivros/kit o senhor dos aneis.jpeg" alt="">
+      <h2>Kit Tolkien</h2>
+      <div>
+        <p>um kit feito para os fãs de O senhor dos anéis, contendo classicos que possui toda a historia de como começou o increvel mundo de tolkien, repleto de ação, história e aventura!</p>
+        <br>
+        <h3 >Valor: R$:120,00</h3>
+        <a href="#">Saiba mais</a>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/kit CS.Lewis.webp" alt="">
+      <h2>Kit Cs. Lewis</h2>
+      <div>
+        <p>trilogia do renomador Cs. Lewis, escritor de As cronicas de narnia, adquira três classicos da literatura cristã</p>
+        <h3 >Valor: R$:89,90</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/kit george martin.webp" alt="">
+      <h2>Kit Georgin Martin</h2>
+      <div>
+        <p>embarque no mundo de Game of thrones, famoso por sua histórica serie, esse kit trás aventuras vividas no mesmo mundo de  GOT</p>
+        <h3 >Valor: R$:109,90</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/kit machado de assis.webp" alt="">
+      <h2>Kit Machado de Assis</h2>
+      <div>
+        <p>considerado por muitos o maior escritor nacional, nesse Kit você terá os classicos mais lidos do pais, como "Dom casmurro" e "Bras cubas"</p>
+        <h3 >Valor: R$:80,90</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/kit sherlock.webp" alt="">
+      <h2>Kit sherlock Holmes</h2>
+      <div>
+        <p>embarque nas aventuras vividas pelo detetive mais famoso da história, viva e aprenda com o imortal sherlock Holmes</p>
+        <h3 >Valor: R$:69,90</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+
+    <article>
+      <img src="/img/imglivros/kit orwell.webp" alt="">
+      <h2>Kit george Orwell</h2>
+      <div>
+        <p>ficção ou realidade? futuro ou presente? nessas ficções Orwell coloca suas criticas sociais de forma aparente, escrevendo em 1940 um livro cujo titulo é "1984", prevendo o futuro da sociedade, estamos vivendo o futuro descrito por Orwell? adquira e descubra!</p>
+        <h3 >Valor: R$:63,90</h3>
+        <a href="#">Saiba mais</a>
+      </div>
+    </article>
+  </div>
+  </section>
+
+  <script src="/testesite.js" ></script>
+</body>
+</html>

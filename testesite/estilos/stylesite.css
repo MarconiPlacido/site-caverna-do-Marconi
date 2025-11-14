@@ -1,0 +1,241 @@
+/* =========================
+   VARIÁVEIS (:root)
+   ========================= */
+:root{
+  --background: #0A1828;
+  --corsecundaria: #178582;
+  --cordafonte: #BFA181;
+  --font-titulo: "Pacifico", cursive;
+
+  --cor-destaque: #d4af37;
+  --cor-texto: #e6d3a3;
+  --cor-titulo: #b8a9ff;
+  --cor-hover: #9aa9ff;
+
+  --cor-borda: rgba(255, 255, 255, 0.06);
+  --sombra-padrao: 0 6px 20px rgba(0, 0, 0, 0.45);
+
+  --fonte-logo: 'Pacifico', cursive;
+  --fonte-titulo: 'Raleway', sans-serif;
+  --fonte-texto: 'Poppins', sans-serif;
+}
+
+/* =========================
+   RESET BÁSICO
+   ========================= */
+*{ margin:0; padding:0; box-sizing: border-box; }
+body{
+  font-family: var(--fonte-texto);
+  background-color: var(--background);
+  color: var(--cordafonte);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding: 0.9rem 1.4rem;
+  background-color: #042d5c;
+  box-shadow: var(--sombra-padrao);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* left header area (menu icon + popup) */
+.left-header{
+  position: relative;
+  display:flex;
+  align-items:center;
+}
+
+/* material icon (hamburger) */
+.material-symbols-outlined{
+  font-size: 36px;
+  color: var(--cordafonte);
+  cursor: pointer;
+  position: relative;
+  z-index: 60; /* acima do menu para sempre poder clicar */
+  margin-right: 0.5rem;
+}
+
+/* popup menu that appears under icon */
+.linksMenu{
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background: #042d5c;
+  border: 1px solid var(--cor-borda);
+  padding: 0.6rem;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+  z-index: 55;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+.linksMenu.show{
+  display: flex;
+}
+
+/* links inside menu */
+.linksMenu .ancora{
+  display:block;
+  padding: 8px 10px;
+  color: var(--cordafonte);
+  text-decoration: none;
+  border-radius: 6px;
+}
+.linksMenu .ancora:hover{
+  background: rgba(255,255,255,0.03);
+  color: var(--cor-hover);
+}
+
+/* logo (centro do header) */
+.logo{
+  font-family: var(--fonte-logo);
+  color: var(--cor-destaque);
+  font-size: 1.6rem;
+  text-align:center;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* header right nav */
+.listaDeLinks{
+  list-style:none;
+  display:flex;
+  gap: 1.2rem;
+  align-items:center;
+}
+.listaDeLinks a{
+  color: var(--cordafonte);
+  text-decoration:none;
+  font-weight: 400;
+}
+.listaDeLinks a:hover{ color: var(--cor-hover); transition: 0.2s; }
+
+/* =========================
+   LAYOUT PRINCIPAL
+   ========================= */
+main{
+  display:flex;
+  width:100%;
+  min-height: calc(100vh - 72px); /* header ocupa ~72px */
+}
+
+/* === ASIDE LATERAL (fixo) === */
+.lateral{
+  width: 220px;
+  min-height: 100vh;
+  padding: 1.2rem;
+  border-right: 1px solid var(--cor-borda);
+  background: linear-gradient(180deg, rgba(4,29,54,0.85) 0%, rgba(3,23,44,0.7) 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  position: sticky;
+  top: 72px; /* abaixo do header */
+}
+
+/* aside items */
+.lateral h2{
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  color: var(--cordafonte);
+  cursor: pointer;
+  padding: 0.45rem 0.35rem;
+  border-radius: 6px;
+}
+.lateral h2:hover{
+  color: var(--cor-hover);
+  background: rgba(255,255,255,0.02);
+  transform: translateX(4px);
+  transition: 0.18s;
+}
+
+/* === CONTEÚDO PRINCIPAL (ao lado do aside) === */
+.conteudo{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap: 2.6rem;
+  padding: 1.8rem 2.4rem;
+}
+
+/* =========================
+   TÍTULOS "BONITÕES"
+   ========================= */
+.titulo1{
+  font-family: var(--fonte-titulo);
+  font-weight: 200;
+  letter-spacing: 5px;
+  color: var(--cor-titulo);
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  text-align:center;
+  margin-top: 0.6rem;
+  text-shadow: 0 2px 12px rgba(184,169,255,0.18);
+  position: relative;
+}
+.titulo1::after{
+  content:"";
+  
+  display:block;
+  width: 120px;
+  height: 3px;
+  margin: 8px auto 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--cor-titulo), var(--cor-hover));
+  opacity: 0.9;
+}
+
+/* =========================
+   GRIDS DE IMAGENS
+   ========================= */
+.imgseries
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  padding: 0.6rem 0;
+}
+.imgMeuMundo{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr ;
+}
+
+.imgseries img,
+.imgMeuMundo img{
+  width:100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--sombra-padrao);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.imgseries img:hover,
+.imgMeuMundo img:hover{
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+@media (max-width: 900px){
+  .lateral{ display:none; } /* esconde lateral em telas pequenas */
+  main{ flex-direction: column; }
+  header{ padding: 0.6rem 1rem; }
+  .logo{ font-size: 1.4rem; }
+  .material-symbols-outlined{ font-size: 32px; }
+  .conteudo{ padding: 1rem; }
+}

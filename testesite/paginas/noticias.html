@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Caverna do Marconi</title>
+  <link rel="icon" href="/estilos/icone.webp">
+  <link rel="" href="api.js">
+  <!-- Material Symbols (ícone menu) -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/estilos/stylesite.css">
+</head>
+
+<body>
+  <header>
+    <div class="left-header">
+      <span id="menu" class="material-symbols-outlined" aria-hidden="true">menu</span>
+      <ul id="linksMenuu" class="linksMenu" aria-hidden="true">
+        <li><a class="ancora" href="#">Cadastros</a></li>
+        <li><a class="ancora" href="#">Criar</a></li>
+        <li><a class="ancora" href="#">Alterar</a></li>
+        <li><a class="ancora" href="#">Deletar</a></li>
+      </ul>
+    </div>
+
+    <h1 class="logo">Caverna do Marconi</h1>
+
+    <nav>
+      <ul class="listaDeLinks">
+        <li><a href="/testesite.html">Home</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Sobre nós</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Noticias</h1>
+    <br>
+
+    <p id="noticias"></p>
+
+
+
+
+  </main>
+    <script src="/testesite.html"></script>
+</body>
+</html>
+
+    <script>
+    async function carregarPiada() {
+    try {
+      const resposta = await fetch("https://api.chucknorris.io/jokes/random");
+      const data = await resposta.json();
+      const p = document.getElementById("noticias");
+      const newp = document.createElement("p");
+
+      p.textContent = data.value;
+      newp.textContent = "Piada nova: " + data.value;
+      p.appendChild(newp);
+    } catch (erro) {
+      console.error("Erro ao carregar:", erro);
+    }
+  }
+
+  carregarPiada();
+</script>
+
+</script>
