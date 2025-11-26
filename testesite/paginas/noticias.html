@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Caverna do Marconi</title>
+
+  <!-- Ícone -->
   <link rel="icon" href="/estilos/icone.webp">
-  <link rel="" href="api.js">
-  <!-- Material Symbols (ícone menu) -->
+
+  <!-- Material Icons -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&family=Raleway:wght@200;400;700&display=swap"
+    rel="stylesheet">
 
-  <!-- CSS principal -->
+  <!-- CSS -->
   <link rel="stylesheet" href="/estilos/stylesite.css">
+  <link rel="stylesheet" href="/estilos/stylenoticias.css">
 </head>
 
 <body>
@@ -39,37 +45,83 @@
       </ul>
     </nav>
   </header>
+
   <main>
-    <h1>Noticias</h1>
-    <br>
+  <br><br>
+  <h1>Notícias</h1>
 
-    <p id="noticias"></p>
+  <div class="pai">
+
+      <div class="containerInf">
+          <div class="containerInf1">
+              <h2>Piadas aleatorias:</h2>
+              <br>
+              <div id="noticias"></div>
+          </div>
+      </div>    
+
+  </div>
+
+    <!-- 🔥 AQUI ENTRA O CONTAINER DOS CARDS DE NOTÍCIAS GERADOS VIA JS -->
+    <div id="lista-noticias" class="lista-noticias"></div>
+
+</main>
 
 
+  <!-- JS -->
+  <script>
+    async function traduzir(texto) {
+        const resposta = await fetch(
+            `https://api.mymemory.translated.net/get?q=${encodeURIComponent(texto)}&langpair=en|pt`
+        );
+  
+        const data = await resposta.json();
+        return data.responseData.translatedText;
+        }
 
-
-  </main>
-    <script src="/testesite.html"></script>
-</body>
-</html>
-
-    <script>
     async function carregarPiada() {
-    try {
-      const resposta = await fetch("https://api.chucknorris.io/jokes/random");
-      const data = await resposta.json();
-      const p = document.getElementById("noticias");
-      const newp = document.createElement("p");
+        try {
+            const resposta = await fetch("https://api.chucknorris.io/jokes/random");
+            const data = await resposta.json();
+            const div = document.getElementById("noticias");
 
-      p.textContent = data.value;
-      newp.textContent = "Piada nova: " + data.value;
-      p.appendChild(newp);
-    } catch (erro) {
-      console.error("Erro ao carregar:", erro);
+            const traducao = await traduzir(data.value);
+
+            div.innerHTML = `
+            <p>${traducao}</p>
+            <p><strong>Original:</strong> ${data.value}</p>
+            `;
+        } catch (erro) {
+            console.error("Erro ao carregar:", erro);
+        }
     }
-  }
 
-  carregarPiada();
-</script>
 
-</script>
+    async function carregarNoticias() {
+      try {
+        const resposta = await fetch(
+          `ttps://gnews.io/api/v4/top-headlines?country=br&lang=pt&apikey=b4a3712c3bcfd7af4a6ae9020c881caf`
+        );
+
+        const data = await resposta.json();
+        const div = document.getElementById("noticias1");
+
+        div.innerHTML = "";
+
+        data.articles.slice(0, 5).forEach((artigo) => {
+          const p = document.createElement("p");
+          p.textContent = artigo.title;
+          div.appendChild(p);
+        });
+
+      } catch (erro) {
+        console.error("Erro ao carregar notícias:", erro);
+      }
+    }
+
+   
+  </script>
+   <script src="/scripts/noticias.js"></script>
+</body>
+
+</html>
