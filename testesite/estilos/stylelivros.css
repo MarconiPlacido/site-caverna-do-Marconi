@@ -132,5 +132,4 @@ body {
 @keyframes marquee {
       100% {
         transform: translateX(calc((var(--items) * (var(--carousel-item-width) + var(--carousel-item-gap))) * -1));
-      }
-    }
+      }}
