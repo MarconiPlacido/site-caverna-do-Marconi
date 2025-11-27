@@ -46,21 +46,45 @@
       <h2>Carrinho</h2>
 
       <h2 id="noticias">Notícias</h2>
-      <a id="aNoticias" href="/paginas/noticias.html"></a>
+      <a style="display: none;" id="aNoticias" href="/paginas/noticias.html"></a>
 
       <h2>Esportes</h2>
 
       <h2 id="livros" >Livros</h2>
-      <a id="aLivros" href="./paginas/livros.html"></a>
+      <a style="display: none;" id="aLivros" href="./paginas/livros.html"></a>
 
     </aside>
 
     <section class="conteudo">
       <h1 class="titulo1">Mundo Místico</h1>
       <div class="imgseries">
-        <img src="img/background.jpeg" alt="">
-        <img src="img/harry.jpg" alt="">
-        <img src="img/Tela De Fundo Pequeno Principe.jpeg" alt="">
+        <a id="aHarry" href="https://play.hbomax.com/movie/138a65ad-be35-4554-b57f-60d38c7ff0f0" target="_blank"><img id="imgSA" src="img/background.jpeg" alt=""></a>
+
+        <a id="aHarry" href="https://play.hbomax.com/movie/73553a76-1658-45f6-9e26-1b9c4443b0d6" target="_blank"><img id="imgHarry" src="img/harry.jpg" alt=""></a>
+        <a id="aHarry" href="https://www.primevideo.com/-/pt/detail/O-Pequeno-Pr%C3%ADncipe---O-Filme/0Q7LASCUMJO59ZAHWK0GI0W50R" target="_blank"><img id="imgHarry" src="img/Tela De Fundo Pequeno Principe.jpeg" alt=""></a>
+      </div>
+
+      <h1 class="titulo1">generos</h1>
+      <div class="imgMeuMundo generos">
+            <div class="containerImgT">
+              <h1>Ação</h1>
+            <img src="img/somb2.jpg" alt="">
+          </div>
+            <div class="containerImgT">
+              <h1>Aventura</h1>
+            <img src="img/somb3.jpg" alt=""></div>
+            <div class="containerImgT">
+              <h1>terror</h1>
+            <img src="img/plan2.jpg" alt=""></div>
+            <div class="containerImgT">
+              <h1>comedia</h1>
+            <img src="img/somplan.jpg" alt=""></div>
+            <div class="containerImgT">
+              <h1>drama</h1>
+            <img src="img/plan.jpg" alt=""></div>
+            <div class="containerImgT">
+              <h1>anime</h1>
+            <img src="img/download.jpeg" alt=""></div>
       </div>
 
       <h1 class="titulo1">Meu Mundo</h1>
@@ -83,33 +107,8 @@
             <p id="valor"></p>
         </li>
     </ul>
-    <script>
-        const  api = require('./api.js')
-        const ul = document.getElementById ("1")
-
-        const nUl = document.createElement("ul")
-        const nli = document.createElement("li")
-        const nh3 = document.createElement("h3")
-        const np1 = document.createElement("p")
-        const np2 = document.createElement("p")
-
-        fetch('http://localhost:3000/dados')
-        .then(response => response.json())
-        .then(data => console.log(data));
-        data.foreach = ()=> {
-            nh3.innerText = Response.name
-            np1.innerText = Response.produto
-            np2.innerText = ("R$:"+response.valor+"");
-
-            nli.appendChild(nh3)
-            nli.appendChild(p1)
-            nli.appendChild(p2)
-            ul.appendChild(nli) 
-        }
-    </script>
 
   </main>
-
   <!-- JS -->
   <script src="testesite.js"></script>
 </body>
